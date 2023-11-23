@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CloudinaryImagesUploaderApplication {
+public class CloudinaryImagesUploaderApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(CloudinaryImagesUploaderApplication.class, args);
