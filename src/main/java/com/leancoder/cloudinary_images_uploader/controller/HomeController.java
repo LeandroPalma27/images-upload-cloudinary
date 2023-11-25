@@ -17,15 +17,7 @@ public class HomeController {
     @GetMapping("/home")
     public String Home() {
         List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
-        /* var res = new ArrayList<String>(20);
-        res.add("hola");
-        int cont = 0;
-        while (cont < 21) {
-            res.add("xd");
-            cont++;
-        }
-        System.out.println(res.size()); */
-        /* numeros.forEach((new HomeController())::mostrarNumero); */
+        /* GENERICS */
         return "Hola mundo";
     }
 
