@@ -1,14 +1,16 @@
 package com.leancoder.cloudinary_images_uploader.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.leancoder.cloudinary_images_uploader.custom.provider.CloudinaryProvider;
+
 @RestController
 public class HomeController {
+
+    @Autowired
+    CloudinaryProvider cloudinaryProvider;
 
     public void mostrarNumero(Integer numero) {
         System.out.println(numero);
@@ -16,16 +18,12 @@ public class HomeController {
     
     @GetMapping("/home")
     public String Home() {
-        List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
-        /* var res = new ArrayList<String>(20);
-        res.add("hola");
-        int cont = 0;
-        while (cont < 21) {
-            res.add("xd");
-            cont++;
+        try {
+            cloudinaryProvider.isSuccessfulConnection();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
-        System.out.println(res.size()); */
-        /* numeros.forEach((new HomeController())::mostrarNumero); */
         return "Hola mundo";
     }
 
