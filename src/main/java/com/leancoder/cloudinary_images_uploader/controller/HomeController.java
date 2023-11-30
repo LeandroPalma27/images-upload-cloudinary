@@ -1,8 +1,13 @@
 package com.leancoder.cloudinary_images_uploader.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.leancoder.cloudinary_images_uploader.custom.provider.CloudinaryProvider;
 
@@ -18,13 +23,14 @@ public class HomeController {
     
     @GetMapping("/home")
     public String Home() {
-        try {
-            cloudinaryProvider.isSuccessfulConnection();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         return "Hola mundo";
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam Map<String, MultipartFile> files) {
+        // TODO: Enviar datos de archivos desde el frontend a este metodo, e imprmir datos de esos archivos en este controlador
+        // Investigar que es el modelAtributte
+        return files.toString();
     }
 
 }
