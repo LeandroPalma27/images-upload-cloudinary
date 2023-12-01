@@ -1,6 +1,9 @@
 package com.leancoder.cloudinary_images_uploader.controller;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,14 +26,24 @@ public class HomeController {
     
     @GetMapping("/home")
     public String Home() {
+        System.out.println("Hola mundo");
         return "Hola mundo";
     }
 
     @PostMapping("/upload")
-    public String upload(@RequestParam Map<String, MultipartFile> files) {
-        // TODO: Enviar datos de archivos desde el frontend a este metodo, e imprmir datos de esos archivos en este controlador
+    public String upload(@RequestParam(value = "files", required = true) MultipartFile[] files) {
         // Investigar que es el modelAtributte
-        return files.toString();
+        // TODO: Implementar subida de archivos cargados a cloudinary, y retornar un response HTTP correspondiente en caso de exito y fallo
+        List<MultipartFile> myFiles = Arrays.asList(files);
+        var res = listToStream(myFiles).map((e) -> {
+            return e.getOriginalFilename();
+        });
+        res.forEach(System.out::println);
+        return "Hola mundo";
+    }
+
+    public <T> Stream<T> listToStream(List<T> list){
+        return list.stream();
     }
 
 }
