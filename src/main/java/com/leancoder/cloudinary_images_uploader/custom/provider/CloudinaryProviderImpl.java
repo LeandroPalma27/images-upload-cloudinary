@@ -3,7 +3,6 @@ package com.leancoder.cloudinary_images_uploader.custom.provider;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
-import com.cloudinary.ProgressCallback;
 import com.cloudinary.api.ApiResponse;
 import com.cloudinary.utils.ObjectUtils;
 
@@ -51,7 +49,6 @@ public class CloudinaryProviderImpl implements ICloudinaryProvider {
 
   @Override
   public List<Map<Object, Map>> guardarArchivos(List<MultipartFile> files) {
-    // Implementar carga visual de archivos en el frontend.
     var instance = cloudinaryAccess.uploader();
     List<Map<Object, Map>> results = new ArrayList<>();
     for (MultipartFile file : files) {
@@ -73,7 +70,6 @@ public class CloudinaryProviderImpl implements ICloudinaryProvider {
 
   @Override
   public void guardarArchivo(File file) {
-    // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'guardarArchivo'");
   }
 
