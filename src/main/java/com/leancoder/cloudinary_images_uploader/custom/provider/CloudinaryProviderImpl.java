@@ -17,11 +17,14 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.api.ApiResponse;
 import com.cloudinary.utils.ObjectUtils;
 
+// Clase provedora de cloudinary, para el accesoa nuestro servidor en cloudinary y el intercambio de informacion con este
 @Component
 public class CloudinaryProviderImpl implements ICloudinaryProvider {
 
+  // Loger para el manejo de informacion en consola
   Logger logger = LoggerFactory.getLogger(CloudinaryProviderImpl.class);
 
+  // Bean de la conexion a cloudinary
   @Autowired
   @Qualifier(value = "cloudinaryInit")
   Cloudinary cloudinaryAccess;
@@ -47,21 +50,31 @@ public class CloudinaryProviderImpl implements ICloudinaryProvider {
     }
   }
 
+  // Metodo provider para guardar una lista de MultipartFiles
   @Override
+  // Retorna una lista de maps un clave Object y un map de valor
   public List<Map<Object, Map>> guardarArchivos(List<MultipartFile> files) {
+    // Obtenemos la instancia de cloudinary access
     var instance = cloudinaryAccess.uploader();
+    // Creamos una lista para recibir los maps al hacer la peticion al cloudinaryInit
     List<Map<Object, Map>> results = new ArrayList<>();
+    // Recorremos la lista de MultiparFiles (YA QUE ENVIAREMOS ARCHIVO POR ARCHIVO)
     for (MultipartFile file : files) {
+      // Definimos un map para los parametros enviamos en cada subida de archivo
       var params = ObjectUtils.asMap(
           "public_id", file.getOriginalFilename().substring(0, file.getOriginalFilename().lastIndexOf(".")).trim(),
           "overwrite", true,
           "faces", true,
           "folder", "drag-and-drop_files");
       try {
+        // Hacemos un try catch para ejecutar la funcion upload del cloudinaryInit
+        // Pasmos como parametro un file.getBytes() y el map con los parametros definidos para la subida del archivo
         Map res = instance.upload(file.getBytes(), params);
-        System.out.println(res.get("secure_url"));
+        logger.info(res.get("secure_url").toString());
+        // Guardamos lo resultante en la lista que retornaremos al final del metodo.
         results.add(res);
       } catch (IOException e) {
+        // En caso de fallar, retornamos un list vacio
         return new ArrayList<>();
       }
     }
