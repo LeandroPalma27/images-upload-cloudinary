@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/* CLASE PARA ENTENDER EL PROCESO DE CREACION DE SESSION EN SPRING Y LA ASIGNACION DE UN JSESSIONID */
 @Controller
 public class HolaController {
     
