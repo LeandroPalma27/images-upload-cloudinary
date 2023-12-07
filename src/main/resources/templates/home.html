@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title != null} ? ${title} : Document"></title>
+</head>
+<body>
+    <h1 th:text="${nombre}"></h1>
+    <form th:action="@{/home}" method="post">
+        // TODO: IMPLEMENTAR FORMULARIO CON ATRIBUTOS BASICOS Y PROCESAMIENTO EN UN POST, TAMBIEN USAR LOS 2 TIPOS DE MODELATTRIBUTE, ASI COMO TAMBIEN CARGAR DATOS LUEGO DE PROCESAR EL FORMULARIO
+        <input type="text" >
+    </form>
+</body>
+</html>

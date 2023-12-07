@@ -17,13 +17,6 @@ public class CloudinaryController {
     @Autowired
     CloudinaryServiceImpl cloudinaryService;
 
-    // Endopoint de prueba
-    @GetMapping("/home")
-    public String Home() {
-        System.out.println("Hola mundo");
-        return "Hola mundo";
-    }
-
     // Endpoint para la subida de archivos
     /* 
      * Recibe como parametros en el body de la peticion, una lista de archivos multipart (normalmente enviado desde un formData)
