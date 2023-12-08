@@ -26,13 +26,17 @@ public class ModelController {
     @GetMapping("/home")
     public String Home(Model model) {
         model.addAttribute("title", "Home");
+        model.addAttribute("probandoModel", "Leandro");
+        model.addAttribute("userValidator", new UsuarioValidator());
         return "home";
     }
 
     @PostMapping("/home")
-    public String HomeProccess(@RequestParam String username, @RequestParam Integer edad, Model model) {
+    public String HomeProccess(@RequestParam String username, @RequestParam Integer edad, @ModelAttribute("userValidator") UsuarioValidator modeloRecuperado2, Model model) {
         UsuarioValidator usuario = new UsuarioValidator(username, edad);
         model.addAttribute("userData", usuario);
+        // Se recupera del modelo enviado desde el form
+        System.out.println(modeloRecuperado2.getUsername());
         return "redirect:/ver";
     }
 
@@ -41,7 +45,6 @@ public class ModelController {
         model.addAttribute("userData", userData);
         return "ver";
     }
-    
 
     @GetMapping("/home2")
     public String Home2 () {

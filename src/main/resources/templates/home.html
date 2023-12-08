@@ -9,11 +9,18 @@
 </head>
 <body>
     <h1 th:text="${nombre}"></h1>
-    <form th:action="@{/home}" method="post">
+    <!-- <form th:action="@{/home}" method="post">
         <label for="username">Username</label>
         <input type="text" name="username" id="username">
         <label for="edad">Edad</label>
         <input type="number" name="edad" id="edad">
+        <input type="submit" value="Enviar">
+    </form> -->
+    <form th:action="@{/home}" method="post" th:object="${userValidator}">
+        <label for="username">Username</label>
+        <input type="text" th:field="*{username}" id="username">
+        <label for="edad">Edad</label>
+        <input type="number" th:field="*{edad}" id="edad">
         <input type="submit" value="Enviar">
     </form>
 </body>
