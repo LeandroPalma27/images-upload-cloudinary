@@ -9,6 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 // Interfaz para la implementacion de metodos para nuestra clase provider de cloudinary
 public interface ICloudinaryProvider {
     public void buscarArchivo(String fileId);
-    public List<Map<Object, Map>> guardarArchivos(List<MultipartFile> files);
+    public List<Map<Object, ?>> guardarArchivos(List<MultipartFile> files);
     public void guardarArchivo(File file);
 }

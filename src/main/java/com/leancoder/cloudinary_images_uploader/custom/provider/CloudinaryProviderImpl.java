@@ -52,12 +52,12 @@ public class CloudinaryProviderImpl implements ICloudinaryProvider {
 
   // Metodo provider para guardar una lista de MultipartFiles
   @Override
-  // Retorna una lista de maps un clave Object y un map de valor
-  public List<Map<Object, Map>> guardarArchivos(List<MultipartFile> files) {
+  // Retorna una lista de maps un clave Object y un generico de valor
+  public List<Map<Object, ?>> guardarArchivos(List<MultipartFile> files) {
     // Obtenemos la instancia de cloudinary access
     var instance = cloudinaryAccess.uploader();
     // Creamos una lista para recibir los maps al hacer la peticion al cloudinaryInit
-    List<Map<Object, Map>> results = new ArrayList<>();
+    List<Map<Object, ?>> results = new ArrayList<>();
     // Recorremos la lista de MultiparFiles (YA QUE ENVIAREMOS ARCHIVO POR ARCHIVO)
     for (MultipartFile file : files) {
       // Definimos un map para los parametros enviamos en cada subida de archivo
