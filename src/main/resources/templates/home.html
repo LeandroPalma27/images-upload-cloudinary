@@ -10,8 +10,11 @@
 <body>
     <h1 th:text="${nombre}"></h1>
     <form th:action="@{/home}" method="post">
-        <!-- // TODO: IMPLEMENTAR FORMULARIO CON ATRIBUTOS BASICOS Y PROCESAMIENTO EN UN POST, TAMBIEN USAR LOS 2 TIPOS DE MODELATTRIBUTE, ASI COMO TAMBIEN CARGAR DATOS LUEGO DE PROCESAR EL FORMULARIO -->
-        <input type="text" >
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <label for="edad">Edad</label>
+        <input type="number" name="edad" id="edad">
+        <input type="submit" value="Enviar">
     </form>
 </body>
 </html>
